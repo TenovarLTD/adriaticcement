@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+
+    <record model="ir.ui.view" id="agent_picking_form_view_inherits">
+        <field name="name">stock.picking.form_inherit.agent</field>
+        <field name="model">stock.picking</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="agent_id"
+                    attrs="{'invisible': [('picking_type_code','!=','outgoing')]}"></field>
+
+            </field>
+        </field>
+    </record>
+
+
+		 <record model="ir.ui.view" id="stock_picking_form_view_send">
+                <field name="name">stock.picking.form.mail</field>
+                <field name="model">stock.picking</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="stock.view_picking_form"/>
+                <field name="arch" type="xml">
+                        <xpath expr="//header/button[@name='action_confirm']" position="after">
+                        	<button name="action_picking_send" string="Send by Email" type="object"  class="btn-primary"/>
+                        </xpath>
+                </field>
+            </record>
+            
+
+</odoo>

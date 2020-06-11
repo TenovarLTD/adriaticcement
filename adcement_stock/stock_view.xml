@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="adecement_stock_pack_operation_form_view">
+        <field name="name">stock.pack.operation.form</field>
+        <field name="model">stock.pack.operation</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_pack_operation_lot_form" />
+        <field name="arch" type="xml">
+            <field name="lot_name" position="replace">
+
+                <field name="lot_name"
+                    invisible="not context.get('only_create', False)" />
+                <field name="arrived_date"
+                    invisible="not context.get('only_create', False)" />
+                <field name="vessel_id"
+                    invisible="not context.get('only_create', False)" />
+            </field>
+        </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="adecementpicking_form_view_inherits">
+        <field name="name">stock.picking.form_inherits</field>
+        <field name="model">stock.picking</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="origin" position="after">
+                <field name="truck_driver"
+                    attrs="{'invisible': [('picking_type_code','!=','outgoing')],'required':[('picking_type_code','=','outgoing')]}"></field>
+                <field name="truck_number"
+                    attrs="{'invisible': [('picking_type_code','!=','outgoing')],'required':[('picking_type_code','=','outgoing')]}"></field>
+                <field name="trailer_number"
+                    attrs="{'invisible': [('picking_type_code','!=','outgoing')],'required':[('picking_type_code','=','outgoing')]}"></field>
+                
+                
+                <field name="weight_certirtificat_number"
+                    attrs="{'invisible': [('picking_type_code','!=','outgoing')],'readonly': [ ('state', '=', 'done')]}"></field>
+                   
+
+            </field>
+        </field>
+    </record>
+
+
+
+    <!-- <delete model="ir.ui.menu" id="stock.menu_action_production_lot_form" 
+        /> <menuitem action="stock.action_production_lot_form" id="menu_action_production_lot_form" 
+        parent="stock.menu_stock_inventory_control" groups="stock.group_production_lot" 
+        string="Tracking/Vessel Number" sequence="101" /> -->
+
+
+
+    <record model="ir.ui.menu" id="stock.menu_action_production_lot_form">
+        <field name="name">Tracking/Vessel Number</field>
+    </record>
+
+    <record id="stock.action_production_lot_form" model="ir.actions.act_window">
+        <field name="name">Tracking/Vessel Number</field>
+    </record>
+    
+    
+     <record model="ir.ui.view" id="stock_production_lot_calendar_view">
+        <field name="name">stock.production.lot Calendar</field>
+        <field name="model">stock.production.lot</field>
+        <field name="priority" eval="2" />
+        <field name="arch" type="xml">
+            <calendar string="Calendar View" date_start="create_date" mode="month"
+                color="vessel_id">
+                <field name="name"/>
+                <field name="product_qty"/>
+            </calendar>
+        </field>
+    </record>
+    
+    
+    
+     <record model="ir.actions.act_window" id="stock.action_production_lot_form">
+      
+        <field name="view_mode">tree,form,calendar</field>
+       
+    </record>
+    
+
+
+
+
+
+</odoo>

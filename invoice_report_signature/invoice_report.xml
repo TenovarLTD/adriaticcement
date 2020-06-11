@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_invoice_signature"
+            inherit_id="account.report_invoice_document">
+            <xpath expr="//p[@t-if='o.fiscal_position_id.note']" position="after">
+                <div align="right">
+                <table >
+                    <tr>
+                        <td
+                            style=" border-bottom: 0px solid;width:350px;text-align: center"><strong>Signature
+                            
+                            </strong></td>
+                    </tr>
+
+                    <tr style="height: 100px;">
+                        <td
+                            style="border: 1px solid black;width : 350px;text-align: center"></td>
+                    </tr> 
+                </table>
+                 </div>
+
+            </xpath>
+            
+            
+     <!--         <xpath expr="//tr[@class='border-black'][2]" position="after">
+             
+              <tr>
+                <td><strong>Amount Paid </strong></td>
+                    <td class="text-right">
+                        <span t-field="o.total_payment"
+                            t-field-options='{"widget": "monetary", "display_currency": "doc.pricelist_id.currency_id"}' />
+                    </td>
+                </tr>
+                <tr t-if="o.residual> 0">
+                <td><strong>Amount Due </strong></td>
+                    <td class="text-right">
+                        <span t-field="o.residual"
+                            t-field-options='{"widget": "monetary", "display_currency": "doc.pricelist_id.currency_id"}' />
+                    </td>
+                </tr>
+            </xpath> -->
+        </template>
+    </data>
+</odoo>

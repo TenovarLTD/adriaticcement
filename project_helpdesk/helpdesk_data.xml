@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <template id='helpdesk' name='helpdesk'>
+            <t t-call='website.layout'>
+               <div id="wrap" class="oe_structure oe_empty"></div> 
+          </t>
+        </template>
+        <record id="menu_helpdesk" model="website.menu">
+            <field name="name">Helpsdek</field>
+            <field name="url">/helpdesk</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">30</field>
+        </record>
+
+    </data>
+</odoo>

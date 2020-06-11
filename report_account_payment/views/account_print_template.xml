@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+    <template id="account_payment.external_layout_delivery_right" inherit_id="report.external_layout" primary="True">
+            <xpath expr="//t[@t-call='report.external_layout_header']" position="attributes">
+                <attribute name="t-call">account_payment.external_layout_header_name_right</attribute>
+            </xpath>
+    </template>
+      
+        
+    <template id="account_payment.external_layout_header_name_right" inherit_id="report.external_layout_header" primary="True">
+            <xpath expr="//div[@name='company_address']" position="after">
+                <div class="col-xs-4 pull-right" name="right_box">
+                    <h2> <strong><span>Report Payments</span></strong> </h2>
+                </div>
+            </xpath>
+    </template>
+
+<template id="report_payment_print">          
+    
+            <t t-call="report.external_layout">
+                     <div class="page">
+                        <div class="col-xs-4 pull-right" name="right_box">
+                        <h2> <strong><span>Report Payments</span></strong> </h2>
+                    </div>
+             
+                        <div class="row mt32 mb32" style="text-align:left;">
+                            <div class="col-xs-12">
+                               <h3><strong>Payment Details </strong></h3>
+                            </div>
+                        </div>
+                         <table class="table table-condensed">
+                            <thead>
+                            <tr style="border: 2px solid black;">
+                               <!-- <th>Account</th>-->
+                                <th style="background-color:#9b9da0 !important;">Name </th>
+                                <th style="background-color:#9b9da0 !important;">Customer</th>
+
+                                <th style="background-color:#9b9da0 !important;">Payment Date</th>
+                                <th style="background-color:#9b9da0 !important;">Payment Method</th>
+
+                                <th style="background-color:#9b9da0 !important;">Payment Amount</th>
+
+                            </tr>
+                        </thead>
+                         <tbody>
+                            <t t-foreach="docs" t-as="line">
+                                <tr style="border: 2px solid black;">
+                                    <td><span t-att-style="style" t-field="line.name"/></td> 
+                                    <td><span t-att-style="style" t-field="line.partner_id.name"/></td>
+                                   <td><span t-att-style="style" t-field="line.payment_date"/> </td>
+                                    <td><span t-att-style="style" t-field="line.journal_id.name"/></td>  
+                                    <td><span t-att-style="style" t-field="line.amount"/></td>                                
+                                </tr>
+                            </t>
+                             </tbody>
+                         </table>
+
+                                     <div class="col-xs-12" style='margin-top:100px'>
+                <div class="col-xs-4">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>CUSTOMER SIGNATURE </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-xs-4"></div>
+                    <div class="col-xs-4">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>NAME IN BLOCKS / ID CARD </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-md-4"> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+                </div>
+                </t>
+            
+           
+     </template>
+        
+    </data>
+</openerp>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+  <report
+            id="receipt_report_payment"
+            model="account.payment"
+            menu="True"
+            report_type="qweb-pdf"
+            string="Payment Receipt"
+            name="account_payment.report_pay"
+            file="account_payment.report_pay"
+         />
+
+    <template id="report_pay">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="account_payment.report_receipt_template"
+                   t-lang="doc.partner_id.lang" />
+            </t>
+        </t>
+    </template>  
+
+	<template id="report_receipt_template">
+	    <t t-call="report.external_layout">
+        <t t-set="doc"  t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+        
+            <div class="page">                
+               
+                <div class="row">
+                                
+                    <div class="col-xs-6" style="padding-left:40px;">
+                        <div >
+                            <span><strong>Customer Details:</strong></span>
+                       </div>
+                       <div>
+                        <address t-field="doc.partner_id"
+                        t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />  
+                        </div>                           
+                    </div>
+                          
+                    <div class="col-xs-6" style="padding-left:30px;">
+                            <div >
+                                <h2> <strong><span>Payment Receipt</span></strong> </h2>
+                            </div>
+                            <div  >                             
+                                <span >Payment  Date: <span t-att-style="style" t-field="doc.payment_date"/></span>
+                            </div>
+                            <div>                          
+                                <span >Payment Method: <span t-att-style="style" t-field="doc.journal_id.name"/></span>
+                            </div>
+                          
+                            <div  >                             
+                                <span >Payment Type: <span t-field="doc.payment_type"/></span>
+                            </div>
+                    
+                   
+                   </div>
+                </div>
+                <t t-if="paid_amount != 0">
+                    <div class="row mt32 mb32" style="text-align:left;">
+                        <div class="col-xs-12">
+                            <h3><strong>Payment Details</strong></h3>
+                       </div>
+                   </div>
+                   <table class="table table-condensed">
+                        <thead>
+                            <tr >
+                                <th style="background-color:#9b9da0 !important;">Customer </th>
+                                <th style="background-color:#9b9da0 !important;">Name</th>
+                                <th style="background-color:#9b9da0 !important;">Payment Date</th>
+                                <th style="background-color:#9b9da0 !important;">Payment Method</th>
+                                <th style="background-color:#9b9da0 !important;">Memo</th>                                 
+                                <th style="background-color:#9b9da0 !important;">Payment Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                    <td><span t-att-style="style" t-field="doc.partner_id.name"/></td>                                    
+                                    <td><span t-att-style="style" t-field="doc.name"/></td> 
+                                    
+                                                                                   
+                                    <td><span t-att-style="style" t-field="doc.payment_date"/> </td>
+                                    <td><span t-att-style="style" t-field="doc.journal_id.name"/></td>  
+
+                                    <td><span t-att-style="style" t-field="doc.communication"/></td>                                    
+                                    <td><span t-att-style="style" t-field="doc.amount"/></td>  
+                            </tr>
+                        </tbody>
+                   </table>
+                </t> 
+
+                        <div class="col-xs-12" style='margin-top:100px'>
+
+
+                        <div class="col-xs-4">
+
+
+                            <table class="table ">
+                                <thead>
+
+                                    <tr>
+                                        <th>CUSTOMER SIGNATURE </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="col-md-4">
+
+                                        </td>
+
+
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                        <div class="col-xs-4">
+
+                        </div>
+
+                        <div class="col-xs-4">
+
+                            <table class="table ">
+                                <thead>
+
+                                    <tr>
+                                        <th>NAME IN BLOCKS / ID CARD </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="col-md-4">
+
+                                        </td>
+
+
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+            </div>
+          </t>
+
+        </template>
+    </data>
+</openerp>

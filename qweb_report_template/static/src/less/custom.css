@@ -1,0 +1,75 @@
+/* Adjusting the margin,padding to make it look good. You can remove or change it according to your needs */
+/*
+.header{
+    margin-left: -15px;
+    margin-right: -15px;
+    border-top: 10px solid #c61e52;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    background-image: url(../images/header.png);
+    background-position: center right;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    border-bottom: 1px solid #71909b54;
+    
+ 
+}
+*/
+/* Adjusting the margin,padding to make it look good. You can remove or change it according to your needs */
+/*
+.footer{
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    padding-bottom: 20px;
+    border-bottom: 10px solid #c61e52 ;
+
+   
+ 
+}*/
+ /* To Fix Footer overlapping page_border div */
+ 
+.headerrow{
+    background-image: url(/qweb_report_template/static/src/images/header.png);
+    background-repeat: no-repeat;
+    background-position: center right;       
+    height: 80px;
+    background-size: 100%;
+    border-bottom: 1px solid #71909b54;
+
+}
+.logo {
+    background-image: url(/qweb_report_template/static/src/images/logo.png);
+    margin-top: 10px;
+    height: 36px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.footerrow1{
+    background:#D7D8DA;
+    /*height: 35px;   */
+}.footerrow2{
+  background:#214192 ; height: 35px;  border-top: 4px solid #D7D8DA
+}
+.footerlogo{
+   
+    width: 100px;
+    margin-left: 0px; 
+
+    background-image:url(/qweb_report_template/static/src/images/footerlogo.png); 
+    background-position: center right;  
+    background-repeat: no-repeat;
+    background-size: auto;
+    border-bottom: 1px solid #71909b54;
+}
+
+.footer1text{font-size: 13px;line-height: 16px; color: #516A73;font-family: 'Fira Sans', sans-serif;}
+/*.footer1text{font-size: 13px;line-height: 36px;color: #516A73;font-family: 'Fira Sans', sans-serif;  letter-spacing: 2px;  }*/
+.footer2text{
+    margin-left: 15px; font-size: 12px;line-height: 17px;display: block;padding-top: 5px; color: #ffffff;font-family: 'Fira Sans', sans-serif;    letter-spacing: 2px;
+}
+.footer3text{font-size: 12px;line-height: 13px; color: #516A73;font-family: 'Fira Sans', sans-serif;}

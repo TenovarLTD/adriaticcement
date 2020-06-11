@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+         <record id="website.my_account" model="website.menu">
+            <field name="name">My Account</field>
+            <field name="url">/my/home</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">20</field>
+            <field name="website_id" ref="website.default_website"/>
+        </record>
+        
+       <!--   <record id="website.login" model="website.menu">
+            <field name="name">My Account</field>
+            <field name="url">/login</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">10</field>
+            <field name="website_id" ref="website.default_website"/>
+        </record> -->
+        
+        <template id="website_portal.my_account_link" name="Link to frontend portal" inherit_id="website.layout">
+       <!--  <xpath expr="//li[@id='o_logout']" position="before">
+            <li><a href="/my/home" role="menuitem">My Account</a></li>
+        </xpath> -->
+    </template>
+
+</odoo>

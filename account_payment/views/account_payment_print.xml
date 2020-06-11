@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            id="report_payment_document"
+            model="account.payment"
+            menu="True"
+            report_type="qweb-pdf"
+            string="Report Payment"
+            name="account_payment.report_payment_print"
+            file="account_payment.report_payment_print"
+         />
+         
+         
+        <!--    <template id="report_payment">
+            <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="account_payment.report_payment_print" t-lang="o.partner_id.lang"/>
+            </t>
+            </t>
+        </template>
+
+-->
+
+   
+
+    </data>
+</openerp>
+
+

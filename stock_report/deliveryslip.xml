@@ -1,0 +1,86 @@
+<odoo>
+    <template id="report_delivery_document3" inherit_id="stock.report_delivery_document">
+    
+    <xpath expr="//h2" position="after">
+    
+    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th t-if="o.truck_driver"><strong>Truck Driver</strong></th>
+                                <th>
+                                    <strong>Truck Number</strong>
+                                </th>
+                                 <th>
+                                    <strong>Trailer Number</strong>
+                                </th>
+                                 <th>
+                                    <strong>Weight Certificate Number</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td t-if="o.truck_driver">
+                                     [Mobile:<span t-field="o.truck_driver.mobile"/>]<span t-field="o.truck_driver"/>
+                                </td>
+                                
+                                <td>
+                                    <span t-field="o.truck_number"/>
+                                 </td>
+                                 
+                                 <td>
+                                  <span t-field="o.trailer_number"/>
+                                 </td>
+                                 
+                                 <td>
+                                  <span t-field="o.weight_certirtificat_number"/>
+                                 </td>      
+                                  
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+    </xpath>
+      
+        <xpath expr="//p[@t-if='o.backorder_id']" position="after">
+        
+         <div class="col-xs-12" style='margin-top:300px'>
+
+
+                        <div class="col-xs-4">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <th>Partner Signature</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="col-md-4">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-4">
+                        </div>
+                        <div class="col-xs-4">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <th>Responsable Signature</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="col-md-4">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+           
+        </xpath>
+    </template>
+</odoo>

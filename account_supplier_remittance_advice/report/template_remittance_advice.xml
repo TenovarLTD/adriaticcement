@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id='template_remittance_advice'>
+
+       
+            <t t-call="report.external_layout">
+                <div class="page">
+
+
+
+                    <div class="oe_structure" />
+                    <div class="row">
+
+
+                        <div class="col-xs-3 pull-left text-left"
+                            >
+                            <span 
+                                t-field="doc.partner_id"
+                                t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true, "phone_icons": true}' />
+                            <br />
+                            
+                            <span 
+                                t-field="doc.partner_id.vat" />
+                                <br />
+
+                            <span 
+                                t-field="doc.partner_id.website" />
+                            
+
+                            
+                            <br />
+                        </div>
+
+                        <div class="col-xs-12">
+
+                            <h2>
+
+                                REMITTANCE ADVICE :
+                                <span t-field="doc.name" />
+                                <!-- <span t-if="doc.invoice_ids[0].type 
+                                    == 'in_invoice'">REMITTANCE ADVICE : <span t-field="doc.name" /></span> <span 
+                                    t-if="doc.invoice_ids.[0].type == 'out_invoice'">Payment Receipt : <span 
+                                    t-field="doc.name" /></span> -->
+                            </h2>
+                        </div>
+
+                        <table
+                            class="table table-condensed table table-striped"
+                            style=" table-layout:fixed;">
+                            <thead style=" background-color:#337ab7;">
+                                <tr>
+                                    <th width="30px"
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">Payment Date:</th>
+                                    <th width="30px"
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">Payment Method
+
+                                    </th>
+                                    <th width="20px"
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">Payment Ref</th>
+
+                                    <th width="20px"
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff; color:#fff !important; ">Ref #</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <tr>
+                                    <td
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                        <div t-field="doc.payment_date" />
+
+                                    </td>
+                                    <td
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                        <div t-field="doc.journal_id" />
+
+                                    </td>
+
+                                    <td
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                        <span t-field="doc.communication" />
+                                    </td>
+                                    <td
+                                        style="border: 1px !important; border-style: solid !important; border-color: #fff !important;">
+                                        <span
+                                            t-field="doc.move_line_ids[0].move_id" />
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+
+                        <table
+                            class="table table-condensed able table-striped">
+                            <thead
+                                style=" background-color:#337ab7; color:#FFF !important;">
+                                <tr>
+                                    <th>Invoice</th>
+                                    <th class="text-right">Bill Date </th>
+                                    <th class="text-right">Supplier Reference </th>
+
+                                    <th class="text-right">Invoice Amount</th>
+                                    <th class="text-right">Payments</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <t t-set="total" t-value="0.0" />
+
+
+
+                                <tr>
+                                    <t t-foreach="doc.invoice_ids"
+                                        t-as="l">
+                                        <tr>
+
+                                            <td>
+                                                <span t-field="l.number" />
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span
+                                                    t-if="l.type == 'out_invoice' ">
+                                                    <span
+                                                        t-field="l.invoice_date" />
+                                                </span>
+
+                                                <span
+                                                    t-if="l.type == 'in_invoice' ">
+                                                    <span
+                                                        t-field="l.date_invoice" />
+                                                </span>
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span t-field="l.reference" />
+                                            </td>
+
+                                            <td class="text-right">
+                                                <span t-field="l.amount_total"
+                                                    t-field-options='{"widget": "monetary", "display_currency": "doc.currency_id"}' />
+                                            </td>
+
+                                            <td class="text-right">
+
+                                                <t t-set="total"
+                                                    t-value="total+l.amount_total_signed" />
+                                                <span
+                                                    t-field="l.amount_total_signed"
+                                                    t-field-options='{"widget": "monetary", "display_currency": "doc.currency_id"}' />
+                                            </td>
+
+
+                                        </tr>
+                                    </t>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        <div t-if="doc.invoice_ids">
+                            <div class="col-xs-3 pull-right">
+                                <table class="table table-condensed ">
+
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left">Total Paid :
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="total"
+                                                    t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.currency_id&quot;}" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+            </t>
+       
+    </template>
+
+</odoo>

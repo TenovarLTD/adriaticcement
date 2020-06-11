@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="adcement_partner_form">
+        <field name="name">res.partner.form.inherit.adcement</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+
+            <group name="container_row_2" position="inside">
+            
+            <group string="Driver" name="sale">
+
+                <group>
+                    <field name="is_driver" />
+                </group>
+                
+                </group>
+            </group>
+
+
+            <!-- <xpath expr="//sheet/notebook/page[@name='sales_purchases']/group[@name='container_row_2']/group[@name='sale']/field[@name='supplier']" 
+                position="after"> <field name="is_driver" /> </xpath> -->
+
+
+
+        </field>
+    </record>
+</odoo>

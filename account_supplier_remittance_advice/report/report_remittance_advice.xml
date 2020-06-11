@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <report id="action_remittance_report" string='Remittance Advice'
+        model='account.payment' report_type='qweb-pdf'
+        name='account_supplier_remittance_advice.remittance_advice' />
+
+   <!--  <template id="report_remittance_advice">
+        <t t-call="report.html_container">
+            <t t-foreach="doc_ids" t-as="doc_id">
+                <t
+                    t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'account_supplier_remittance_advice.template_remittance_advice')" />
+            </t>
+        </t>
+    </template> -->
+    
+    
+    <template id="remittance_advice">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="account_supplier_remittance_advice.template_remittance_advice" t-lang="doc.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+
+
+
+
+
+</odoo>
+
+
+
+

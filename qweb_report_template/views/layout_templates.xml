@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+   <!--  <template id="assets_pdf_css" name="Custom Report CSS" inherit_id="report.assets_common">
+        <xpath expr="." position="inside">            
+            <link href="/qweb_report_template/static/src/scss/custom.css" rel="stylesheet" type="text/css"/>
+            <link href="/qweb_report_template/static/src/scss/tables.less" rel="stylesheet"  type="text/less"/>
+            <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet"/>
+            <link href="/qweb_report_template/static/src/scss/variables.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+    </template> -->
+  <template id="address_layout_new_inherited">            
+        <div class="row mb64 first-page" style="margin-top: 4px;position: relative;" >
+       <!--      <div class="col-xs-7" style ="left: 30px;">
+               <t t-if="qr">
+                <div class="row">
+                    <div name="qr_code1" t-att-class="colclass">
+                        <t t-raw="qr_code1"/>
+                    </div>
+                </div>
+              </t>
+            </div> -->
+  
+          <div class="col-xs-5 col-offset-5"  name="company_address">             
+            <t t-set="company_address"/>             
+            <div style="text-align:left;">
+                <strong><span t-field="res_company.partner_id" /><br/></strong>
+                <span t-if="res_company.partner_id.street"><span  t-field="res_company.partner_id.street" /><br/></span>
+                <span t-if="res_company.partner_id.street2"><span  t-field="res_company.partner_id.street2" /><br/></span>
+                <span t-if="res_company.partner_id.city"><span  t-field="res_company.partner_id.city" /><br/></span>
+                <span t-if="res_company.partner_id.country_id"><span  t-field="res_company.partner_id.country_id" /></span> 
+            </div>                       
+                     
+ 
+          </div>          
+          </div>         
+           
+
+       
+    </template>
+ 
+  <template id="external_layout_header_inherited" inherit_id="report.external_layout_header">
+    <xpath expr="//div[@class='header']" position="replace"> 
+        <div class="header headerrow">
+                  <div class="row" style="padding:10px 0;" >
+                    <div class="col-xs-6">
+                        <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo" style="height: 50px;"  alt="Logo"/>
+                    </div>
+                    
+                      <div class="col-xs-6 " />                                       
+                </div>
+
+                  <div style="border-bottom: 2px solid #214192;"/>
+                      
+                    <t t-call="qweb_report_template.address_layout_new_inherited"/>                                   
+                 
+            </div>
+            <br/><br/>
+            <t t-if="address">
+                <div class="address row" >               
+                   <t t-set="colclass" t-value="'col-xs-5 offset-1'"/>
+                   <div name="address" class="col-xs-6" >
+                    <strong><span>Customer address :</span><br/></strong>
+                        <t t-raw="address"/>
+                    </div>
+                    <t t-if="information_block">                    
+                        <div name="information_block"  t-att-class="colclass">
+                            <t t-raw="information_block"/>
+                        </div>
+                    </t>
+                    
+                </div>
+            </t>
+    </xpath>
+  </template>
+<!-- 
+<template id="external_layout_footer_inherited" inherit_id="report.external_layout_footer">
+    <xpath expr="//div[@class='footer']" position="replace"> 
+         <div class="footer"> 
+            <div class="row">            
+                 <t t-if="company.custom_footer">
+                        <span class="footer3text" t-raw="company.rml_footer"/>
+                    </t> 
+             </div>                      
+             
+              <div class="row footerrow1"  >
+                <div class="col-xs-2">
+                    <div  class=""> </div>
+                </div>
+              <div class="col-xs-10" >
+                 <t t-set="company" t-value="company.sudo()"/>     
+                  <div style="margin-bottom:-15px; padding-top:5px;">
+                      <ul id="bank_account" t-foreach="company.bank_ids" t-as="ba" class="list-inline  footer1text">
+                    
+                          <li t-if="ba.bank_id.name" class="list-inline-item">Bank: <span t-field="ba.bank_id.name"/></li>
+                            <li t-if="ba.acc_number" class="list-inline-item">IBAN No.: <span t-field="ba.acc_number"/></li>
+                            <li t-if="ba.bank_id.bic" class="list-inline-item">Swift Code: <span t-field="ba.bank_id.bic"/></li>
+                         <li t-if="ba.bank_id.country" class="list-inline-item">Country:<span t-field="ba.bank_id.country"/></li>
+                    </ul>
+                  </div>
+            
+                 <div style="margin-bottom:10px;">
+            
+                      <ul class="list-inline footer1text" >
+                                          
+                            <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email"/></li>
+                            <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone"/></li>
+                          
+                            <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website"/></li>
+                            <li t-if="company.vat" class="list-inline-item">: <span t-field="company.vat"/></li>
+
+                        </ul>
+                  </div>
+                </div>
+              </div>
+                  
+                    <div class="row footerrow2"  >
+                        <div class="col-xs-10">
+                            <p name="financial_infos" class="footer2text"> <span>Opening hours : Monday To Friday 08:00 - 17:00 </span>
+                                
+                                </p>
+                            </div>                    
+                        
+                        <div class="col-xs-2" >
+                            <p class="text-right footer2text">Page: <span class="page"/> / <span class="topage"/></p>
+                        </div>
+                    </div>
+             </div>  
+          </xpath>
+
+  </template>
+
+  -->
+
+    
+
+
+    <!-- Public api: layout to t-call from reports -->
+    </data>
+</odoo>
