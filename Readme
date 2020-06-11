@@ -1,6 +1,8 @@
 /etc/conf
 addons 1: https://github.com/OCA/commission/tree/10.0
-addons 2 https://github.com/OCA/maintenance/tree/10.0
+addons 2:https://github.com/OCA/maintenance/tree/10.0
+addons 3 : https://github.com/itpp-labs/access-addons
+addons 4 : https://github.com/itpp-labs/misc-addons
 
 Url test server : adriatic_testing.teamtouch.online
 Login:medhabib@tenovar.com
