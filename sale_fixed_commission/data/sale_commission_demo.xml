@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <record id="res_partner_eiffel_sale_agent" model="sale.order.line.pricelist.commission">
+            <field name="is_pricelist">False</field>            
+        </record>
+
+      
+    </data>
+</openerp>

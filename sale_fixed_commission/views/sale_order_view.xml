@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_agent_form_inherited2" model="ir.ui.view">
+        <field name="name">sale.agent.order.inherited2.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form//field[@name='agents']" position="after">
+                <field name="is_product" invisible="1"/>
+            </xpath>
+           <xpath expr="//field[@name='order_line']/form//field[@name='agents']" position="replace">
+                 <field name="agents"
+                       attrs="{'invisible': [('commission_free', '=', True)],'readonly': [('is_product', '=', False)]}"/>
+
+            </xpath>
+           
+        </field>
+    </record>
+ <!--
+ <record model="ir.ui.view" id="view_sale_order_line_tree">
+    <field name="model">sale.order.line.agent</field>
+    <field name="inherit_id" ref="sale_commission.view_sale_order_line_tree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//tree/field[@name='commission']" position="replace">
+            <field name="commission" readonly="1"/>
+        </xpath>           
+    </field>
+</record>
+  -->
+ 
+</odoo>
