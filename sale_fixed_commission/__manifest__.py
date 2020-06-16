@@ -9,12 +9,11 @@
     'website': 'https://tenovar.com',
     'license': 'AGPL-3',
     'depends': [
-        'sale_commission','sale','product',
+        'sale_commission','sale'
     ],
     'data': [
         'views/product_pricelist_view.xml',
-        'views/sale_order_view.xml',
-        'data/sale_commission_demo.xml',
+        'views/sale_order_view.xml',     
     ],
     'installable': True,
 }
